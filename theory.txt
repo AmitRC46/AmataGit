@@ -255,6 +255,7 @@ ln -s =softlink= work as a shortcut
 cat etc/os-release =provide the info for the OS (imp for interview)
 wget = It is the non-interactive network downloader
 yum=yellowbug updater modifier
+command -h   == for help and other information
 
 
 
