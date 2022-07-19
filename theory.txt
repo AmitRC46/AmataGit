@@ -1,0 +1,290 @@
+<<<<Zoom at 70% for better indentation>>>>
+
+#######################################################################################
+History and Facts of Linux
+#######################################################################################
+Linux, computer operating system created in the early 1990s by Finnish software engineer Linus Torvalds and the Free Software Foundation (FSF). While still a student at the University of Helsinki, Torvalds started developing Linux to create a system similar to MINIX(Base version of Linux), a UNIX operating system.
+
+Linux is not an OS, it is Kernel(the main component of a Linux operating system (OS) and is the core interface between a computer's hardware and its processes)
+
+Flavours of LINUX:
+-RHEL
+-Fedora
+-Debian
+-Others{Ubuntu(3rd most used OS), CentOS, Amazon Linux, Kali Linux(For Hacking purpose)}
+
+Any OS can be used by below two method-
+-CLI(Command Line Interface)
+-GUI(Graphical User Interface)
+
+For DevOps and Server Administration work we use CLI method.
+
+NOTE: *Linux is not a UNIX derivative. It was written from scratch. Both the OS are different.
+             *A Linux distribution is the linux Kernel and a collection of software that together creat an OS.
+
+Linux OS(or Linux Distribution) == Linux Kernel + GNU (GNU is an extensive collection of free software, which can be used as an operating system or can be used in parts with other operating systems. The use of the completed GNU tools led to the family of operating systems popularly known as Linux)
+
+**The GNU operating system is a complete free software system, upward-compatible with Unix. GNU stands for “GNU's Not Unix.” It is pronounced as one syllable with a hard g. Richard Stallman made the Initial Announcement of the GNU Project in September 1983.
+
+####################################################################################################
+Features Of Linux
+####################################################################################################
+1. Open Source
+2. Secure
+3. Simplified updates for all installed packages(Softwares)
+4. Light-Weight
+5. Multiuser-Multitask
+6. Multiple Distribution- RedHat, Debian, Fedora
+
+####################################################################################################
+Comparison of Windows and LINUX
+####################################################################################################
+_________________________________
+||  Windows--------------------------LINUX  ||
+_________________________________
+   FOLDER-----------------------directory
+  ADMINISTRATOR-----------root
+  file--------------------------------file
+  Software-------------------------package
+
+#File System Hierarchy:
+
+Windows                                                                                                                                       Linux
+	|																	|
+       C:\																	/ (top level root directory)
+____|______________________________________			                 _________________|______________________________________
+|                           |                         |                              |				         |                     |                    |                 |                 |                 |               |
+Programfiles     users       Programfiles(x86)           Perflogs		     /root             /home            /boot           /etc            /usr            /bin          /dev
+
+/home - Home directory for other users
+/root - It is home directory for root user
+/boot - It contains all bootable files for Linux
+/etc - It Contains all configuration files
+/usr -by default software are installed in this directory
+/bin(binary) - It contains commands used by all users, including root user.
+/sbin -It contains commands used by only root user.
+/opt - optional application software package
+/dev - Essential device files. this include terminal devices,USB or any device attached to the system
+
+########################################################################################################
+Basic Commands of LINUX
+########################################################################################################
+1. To Create a file:
+	__________|_______________________
+        |                      |                        |                   |                      
+     cat                touch                vi/vim             nano
+
+
+cat command:
+----------------------------------------------------------------------------------------------------------------------
+username@PC-NAME:~/linux$ cat > file1
+write your content of file1, once done press ctrl+d to exit from the editor mode
+we can't edit file with cat command, it is mainly used for view the file content
+but we can append(concatenate) some new text with the old one via below command
+username@PC-NAME:~/linux$ cat >> file1
+this is the new line which will be appended in file1
+username@PC-NAME:~/linux$ cat file1
+write your content of file1, once done press ctrl+d to exit from the editor mode
+we can't edit file with cat command, it is mainly used for view the file content
+but we can append(concatinate) some new text with the old one via below command
+this is the new line which will be appended in file1
+----------------------------------------------------------------------------------------------------------------------
+ use cases: - create files(single files only)
+		- Concatenate file(to add more than one file into one single file)
+		- Copyfiles (To copy the content of x into y)
+		- tac command (to see the content in Bottom to top)
+
+touch command:
+
+-create empty file(single and multiple files)
+-change all timestamp* of a file (touch <filename>)==automatically change all time to latest for the file
+-update only access time of the file, modify time of file
+
+*TimeStamp:
+  _________|__________________
+  |                              |                       |
+Access time    Modify time    Change time
+
+Access time: Last time a file was access    (touch -a)
+Modify time: Last time when a file was modified   (touch -m)
+Change time: Last time when file metadata was changed
+-------------------------------------------------------------------------------------------------
+to check all the time:
+username@PC-NAME:~/linux$ stat file2
+  File: file2
+  Size: 18              Blocks: 8          IO Block: 4096   regular file
+Device: 820h/2080d      Inode: 64716       Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/azureadmin)   Gid: ( 1000/azureadmin)
+Access: 2022-06-24 12:45:45.466832700 +0530
+Modify: 2022-06-28 04:30:03.476550900 +0530
+Change: 2022-06-28 04:30:03.476550900 +0530
+--------------------------------------------------------------------------------------------------
+
+To Change access time
+username@PC-NAME:~/linux$touch -a file2
+To Change modify time
+username@PC-NAME:~/linux$touch -m file2
+
+vi command:
+
+- It is a programmer text editor
+-It can be used to edit all kinds of plain text, it is specially useful for editing programs.
+--------------------------------------------------------------------------------------------------------------
+username@PC-NAME:~/linux$ vi file3
+<An editor will open, press I ti insert some data or edit the data
+~
+~
+~
+then press ESC and do as required mentioned below>
+
+Note-      :w   - to save
+	      :wq or :x  - to save & quit
+	      :q   - quit
+	      :q! - force quit, no save
+---------------------------------------------------------------------------------------------------------------
+'vi' is a standard whereas 'nano' has to be available depending on the linux you use
+
+2. to view long list of files
+username@PC-NAME:~/linux$ls -l
+or
+username@PC-NAME:~/linux$ll
+
+username@PC-NAME:~/linux$ls -a   (to see hidden files)
+username@PC-NAME:~/linux$history (to see all the commands ran)
+
+3. To create directory:
+username@PC-NAME:~/linux$mkdir  <directyory name>
+    To create multiple directory:
+username@PC-NAME:~/linux$mkdir dir1 dir2 dir3
+    To create nested directory under a parent directory:
+username@PC-NAME:~/linux$mkdir -p dir1/dir2/dir3
+
+4. To change directory:
+username@PC-NAME:~/linux$cd  <directory name>
+    To change long path:
+username@PC-NAME:~/linux$cd ../../../.. 
+
+5. To get a Idea of Permission(file and directory) in Linux:
+ there are only 3 types of permission in Linux:
+Read(r)-> 4 , Write(w)->2, Execute(x)->1
+-       |     rw-     |     r--    |     r--                           rwx=4+2+1=7
+            users        group     others
+               7               4           4
+
+r/4 -to display the content of the file or to list the content of the directory
+w/2 -to modify the file or to create/remove the directory
+x/1 -to execute the file or to enter in to the directory
+
+
+drwxr-xr-x    ->directory permission
+-rw-r--r--       -> file permission
+
+d -denotes directory
+- -denotes file
+
+6. to check current working directory
+pwd -print working directory
+
+7. To check the content of any directory:
+ username@PC-NAME:~/linux$ls -lart 
+ -l  =long list
+-a = hidden file
+-r =reverse order
+-t =sort by last modified time
+ll = alias of ls -l
+
+8. To create hidden file
+username@PC-NAME:~/linux$touch .file1
+9. To copy file:
+username@PC-NAME:~/linux$cp <source file path> <target file path>
+10. To move/rename file:
+username@PC-NAME:~/linux$mv <source file path> <target file path>
+11. To remove file:
+username@PC-NAME:~/linux$rm file1
+12. To remove directory:
+username@PC-NAME:~/linux$rmdir dir1
+
+command list:
+username@PC-NAME:~/linux$more file1
+display all the pages of the file1
+username@PC-NAME:~/linux$less file1
+display the content of the 1st page only
+username@PC-NAME:~/linux$head file1
+display the 1st 10 lines of the file1
+username@PC-NAME:~/linux$tail file1
+display last 10 lines of file1
+username@PC-NAME:~/linux$hostname
+display the hostname of the server
+username@PC-NAME:~/linux#yum install httpd
+install the package httpd
+username@PC-NAME:~/linux#yum remove httpd
+uninstall the package
+username@PC-NAME:~/linux#yum update httpd
+update the package, if updates are available
+username@PC-NAME:~/linux#service httpd start
+to start the service
+username@PC-NAME:~/linux#service httpd status
+to check the status of the service
+username@PC-NAME:~/linux$whoami
+display the user name
+username@PC-NAME:~/linux$id
+display the user and group information
+username@PC-NAME:~/linux$chkconfig httpd on
+to enable the service on boot automatically
+username@PC-NAME:~/linux$chkconfig httpd off
+to disable the service on boot automatically
+username@PC-NAME:~/linux#yum list installed
+display the packages installed
+username@PC-NAME:~/linux$useradd
+to add the user
+username@PC-NAME:~/linux$groupadd
+to create a group
+username@PC-NAME:~/linux$gpassword -a
+username@PC-NAME:~/linux$gpassword -M
+to add user into group/ to add multiple user 
+username@PC-NAME:~/linux$gzip file1
+to zip the file1
+username@PC-NAME:~/linux$gunzip file1
+to unzip file1
+
+tar (Tape Archive) =to archive multiple directory into one (also read the options for TAR)
+ln =hardlink=backup=it will automatically update the backup file
+ln -s =softlink= work as a shortcut
+cat etc/os-release =provide the info for the OS (imp for interview)
+wget = It is the non-interactive network downloader
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
